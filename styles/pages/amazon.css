@@ -154,3 +154,12 @@
   padding: 8px;
   border-radius: 50px;
 }
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 100px;
+}
