@@ -172,12 +172,12 @@ export function updateCartQuantity() {
 
 document.querySelector('.search-button').addEventListener('click',() => {
   const text = document.querySelector('.search-bar').value;
-  window.location.href = `../index.html?search=${text}`;
+  window.location.href = `index.html?search=${text}`;
 });
 
 document.querySelector('.search-bar').addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     const text = document.querySelector('.search-bar').value;
-    window.location.href = `../index.html?search=${text}`;
+    window.location.href = `index.html?search=${text}`;
   }
 });
