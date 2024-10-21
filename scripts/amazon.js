@@ -3,6 +3,7 @@ import {products, loadProducts, loadProductsFetch} from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
 let isSearched = false;
+let found = false;
 const url = new URL(window.location.href);
 let searchText;
 if (url.searchParams.get('search')) {
@@ -23,6 +24,7 @@ function renderProductsGrid() {
   products.forEach((product) => {
     if (isSearched) {
       if (product.name.toLowerCase().includes(searchText) || product.keywords.includes(searchText)) {
+        found = true;
         productsHTML += `
         <div class="product-container">
           <div class="product-image-container">
@@ -133,7 +135,12 @@ function renderProductsGrid() {
       `;
     }
   });
-  document.querySelector('.js-products-grid').innerHTML = productsHTML;
+  if (isSearched && found || !isSearched) {
+    document.querySelector('.js-products-grid').innerHTML = productsHTML;
+  } else if (isSearched && !found) {
+    document.querySelector('.main').classList.add('not-found');
+    document.querySelector('.main').innerHTML = "Not Found Matching Products!";
+  }
 
   
 
